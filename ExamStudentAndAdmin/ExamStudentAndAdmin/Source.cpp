@@ -13,8 +13,8 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	Application app;
-	app.menu();
+	Application* app = nullptr;
+	app->menu();
 
 	system("pause");
 }

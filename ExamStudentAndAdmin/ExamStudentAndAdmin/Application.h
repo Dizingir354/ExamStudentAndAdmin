@@ -15,7 +15,7 @@ using namespace std;
 
 class Application
 {
-		User* user;
+		User* user = nullptr;
 		//map<int, Test> tests;
 
 	public:
@@ -120,8 +120,6 @@ class Application
 					cout << "*";
 				}
 
-
-
 			} while (c != 13);
 			int hashPass = Pass(pa);
 			ifstream in;
@@ -134,11 +132,11 @@ class Application
 				{
 					if (login == "admin")
 					{
-						user = new Admin;
+						this->user = new Admin;
 					}
 					else
 					{
-						user = new Student;
+						this->user = new Student;
 					}
 					in.close();
 					break;

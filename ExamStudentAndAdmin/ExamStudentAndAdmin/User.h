@@ -1,5 +1,4 @@
 #pragma once
-
 #include<iostream>
 #include<list>
 #include<vector>
@@ -14,7 +13,7 @@ class User
 public:
 
 	int hashPass;
-	Test::Test* test;
+	Test::Test* test = nullptr;
 	int mark;
 
 	string login;
@@ -29,6 +28,17 @@ public:
 		cout << "Enter your password: " << endl;
 		string pa;
 		hash<string> Pass;
+		char ch; //для скрытие пороля
+
+		ch = _getch();
+
+		while (ch != 13)
+		{
+			pa.push_back(ch);
+			cout << ' ';
+			ch = _getch();
+		}
+		cout << endl;
 		getline(cin, pa);
 		int hashPass = Pass(pa);
 		ofstream out;
@@ -80,7 +90,7 @@ class Student : public User
 		int c;
 		cin >> c;
 		cin.ignore();
-		test = new Test::Test;
+		test = new Test::Test();
 		in.open("categorys\\" + tn[c - 1] + ".txt");
 		getline(in, test->name);
 		int lenQ;
@@ -230,12 +240,10 @@ class Admin : public User
 		{
 			getline(name, login);
 			logins.push_back(login);
-
 		}
 		name.close();
 		for (size_t i = 0; i < logins.size(); i++)
 		{
-
 			cout << i + 1 << "." << logins[i] << endl;
 		}
 
